@@ -1,2 +1,2 @@
-# popular-movies
-Android Udacity Nano-degree project
+# Popular Movies :movie_camera:
+Android :calling: Udacity Nano-degree project
