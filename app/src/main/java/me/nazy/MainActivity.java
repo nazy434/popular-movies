@@ -1,19 +1,34 @@
 package me.nazy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieItemClickListener {
     private String TAG = MainActivity.class.getSimpleName();
+
+    private MovieAdapter mAdapter;
+    private RecyclerView mMoviesList;
+    private Toast mToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMoviesList = findViewById(R.id.rv_movies);
+
+        // TODO: add me to dimens
+        GridLayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 3);
+        mMoviesList.setLayoutManager(layoutManager);
+        mMoviesList.setHasFixedSize(true);
+
+        mAdapter = new MovieAdapter(100, this);
+        mMoviesList.setAdapter(mAdapter);
     }
 
     @Override
@@ -28,5 +43,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Sort action item selected", Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    @Override
+    public void onMovieItemClick(int clickedMovieIndex) {
+        if (mToast != null) {
+            mToast.cancel();
+        }
+        mToast.makeText(MainActivity.this, "Movie Item clicked in list", Toast.LENGTH_SHORT).show();
     }
 }
