@@ -12,20 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private static final String TAG = MovieAdapter.class.getSimpleName();
-    final private MovieItemClickListener mOnClickListener;
+    private static final String TEMPORARY_MOVIE_NAME = "Temp Movie";
 
-    private static int viewHolderCount;
+    private final MovieItemClickListener mOnClickListener;
     private int mMovieItems;
 
     public interface MovieItemClickListener {
         void onMovieItemClick(int clickedMovieIndex);
     }
 
-    public MovieAdapter(int movieItemsCount, MovieItemClickListener listener) {
+    MovieAdapter(int movieItemsCount, MovieItemClickListener listener) {
         mMovieItems = movieItemsCount;
         mOnClickListener = listener;
-        // TODO: fix me
-        viewHolderCount = 0;
     }
 
     @NonNull
@@ -41,8 +39,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        //TODO: Fix me
-        holder.bind("Test2222");
+        String movieName = TEMPORARY_MOVIE_NAME + " " + String.valueOf(position);
+        holder.bind(movieName);
     }
 
     @Override

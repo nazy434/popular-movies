@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         setContentView(R.layout.activity_main);
         mMoviesList = findViewById(R.id.rv_movies);
 
-        // TODO: add me to dimens
-        GridLayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 3);
+        int columnCount = this.getResources().getInteger((R.integer.home_grid_column_count));
+        GridLayoutManager layoutManager = new GridLayoutManager(MainActivity.this, columnCount);
         mMoviesList.setLayoutManager(layoutManager);
         mMoviesList.setHasFixedSize(true);
 
