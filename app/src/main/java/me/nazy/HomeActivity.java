@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +51,10 @@ public class HomeActivity extends AppCompatActivity implements MovieAdapter.Movi
         if (mToast != null) {
             mToast.cancel();
         }
+        mToast = new Toast(HomeActivity.this);
         mToast.makeText(HomeActivity.this, "Movie Item clicked in list", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(HomeActivity.this, MovieDetailActivity.class);
+        intent.putExtra("movie_details", clickedMovieIndex);
+        startActivity(intent);
     }
 }
