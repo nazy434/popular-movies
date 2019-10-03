@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieItemClickListener {
-    private String TAG = MainActivity.class.getSimpleName();
+public class HomeActivity extends AppCompatActivity implements MovieAdapter.MovieItemClickListener {
+    private String TAG = HomeActivity.class.getSimpleName();
 
     private MovieAdapter mAdapter;
     private RecyclerView mMoviesList;
@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         mMoviesList = findViewById(R.id.rv_movies);
 
         int columnCount = this.getResources().getInteger((R.integer.home_grid_column_count));
-        GridLayoutManager layoutManager = new GridLayoutManager(MainActivity.this, columnCount);
+        GridLayoutManager layoutManager = new GridLayoutManager(HomeActivity.this, columnCount);
         mMoviesList.setLayoutManager(layoutManager);
         mMoviesList.setHasFixedSize(true);
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_sort) {
-            Toast.makeText(MainActivity.this, "Sort action item selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Sort action item selected", Toast.LENGTH_SHORT).show();
         }
         return true;
     }
@@ -50,6 +50,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         if (mToast != null) {
             mToast.cancel();
         }
-        mToast.makeText(MainActivity.this, "Movie Item clicked in list", Toast.LENGTH_SHORT).show();
+        mToast.makeText(HomeActivity.this, "Movie Item clicked in list", Toast.LENGTH_SHORT).show();
     }
 }
